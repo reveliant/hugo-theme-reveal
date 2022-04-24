@@ -1,0 +1,2 @@
+{{ $mail := split .Site.Author.email "@" -}}
+<a href="mailto:{{ replace .Site.Author.email "@" "(at)" }}">{{ index $mail 0 }}<span class="fa fa-at" data-fa-transform="down-2"></span>{{ index $mail 1 }}</a>

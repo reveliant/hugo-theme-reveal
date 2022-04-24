@@ -1,0 +1,59 @@
+{{ define "main" }}
+		<div class="reveal">
+			<header class="slide-title">
+				<span id="reveal-header"></span>
+				<a class="text-white" href="{{ .Site.Home.RelPermalink }}#/2" title="Retourner à la liste des cours"><span class="fa fa-home"></span></a>
+			</header>
+			<footer class="slide-footer" id="reveal-footer"></footer>
+			<div class="slides">
+				{{- $section := . }}
+                <section class="main-title" data-state="center-title"{{ if .Param "bg-image" }} data-background-image="{{ path.Join "bg" (.Param "bg-image") | relURL }}" data-background-opacity=".2" data-background-color="#002255" data-background-credits="{{ .Param "bg-credits" }}" data-background-author="{{ .Param "bg-author" }}"{{ if .Param "bg-authornick" }} data-background-author-nickname="{{ .Param "bg-authornick" }}"{{ end }}{{ if .Param "bg-position" }} data-background-position="{{ .Param "bg-position" }}"{{ end }}{{ if .Param "bg-size" }} data-background-size="{{ .Param "bg-size" }}"{{ end }}{{ end }}>
+                    <h1><a href="{{ .Site.Home.RelPermalink }}#/2">{{ .Site.Title }}</a></h1>
+                    <h2>{{ .Title }}</h2>
+					<aside class="notes">
+						<p>Pour afficher ou masquer ces notes à côté des slides, ajouter dans l'URL :</p>
+						<ul class="notes-display-links">
+							<li><a href="?showNotes">?showNotes</a> pour les afficher</li>
+							<li><a href="?hideNotes">?hideNotes</a> pour les masquer</li>
+						</ul>
+						<p>Actions clavier :</p>
+						<ul>
+							<li><kbd>S</kbd> : écran présentateur</li>
+							<li><kbd>O</kbd> : aperçu des slides</li>
+							<li><kbd>V</kbd> : mise en pause</li>
+						</ul>
+					</aside>
+                </section>
+                {{- if .Content }}
+                <section data-state="reveal-header" data-header="{{ .Title }}">
+                    {{ .Content }}
+                </section>
+                {{- end }}
+                {{- range .RegularPages }}
+                    {{- partial "slide.html" . }}
+                {{- end }}
+				{{- range sort .Sections ".Weight" "asc" }}
+				<section class="container">
+					<section data-state="center-title"
+						{{- if .Param "bg-image" }}
+							data-background-image="{{ path.Join "bg" (.Param "bg-image") | relURL }}" data-background-opacity=".2" data-background-color="#aa0000" data-background-credits="{{ .Param "bg-credits" }}" data-background-author="{{ .Param "bg-author" }}"{{ if .Param "bg-authornick" }} data-background-author-nickname="{{ .Param "bg-authornick" }}"{{ end }}{{ if .Param "bg-position" }} data-background-position="{{ .Param "bg-position" }}"{{ end }}{{ if .Param "bg-size" }} data-background-size="{{ .Param "bg-size" }}"{{ end }}
+						{{- else if $section.Param "bg-image" }}
+							data-background-image="{{ path.Join "bg" ($section.Param "bg-image") | relURL }}" data-background-opacity=".2" data-background-color="#aa0000" data-background-credits="{{ $section.Param "bg-credits" }}" data-background-author="{{ $section.Param "bg-author" }}"{{ if $section.Param "bg-authornick" }} data-background-author-nickname="{{ $section.Param "bg-authornick" }}"{{ end }}{{ if $section.Param "bg-position" }} data-background-position="{{ $section.Param "bg-position" }}"{{ end }}{{ if $section.Param "bg-size" }} data-background-size="{{ $section.Param "bg-size" }}"{{ end }}
+						{{ end }}
+					>
+						<h2>{{ .Title | markdownify }}</h2>
+						<aside class="notes">&nbsp;</aside>
+					</section>
+					{{- if .Content -}}
+					<section data-state="reveal-header" data-header="{{ .Title | markdownify}}">
+						{{ .Content }}
+					</section>
+					{{- end -}}
+					{{- range .Pages.ByWeight }}
+						{{- partial "slide.html" . }}
+					{{- end -}}
+				</section>
+				{{- end }}
+			</div>
+		</div>
+{{ end }}

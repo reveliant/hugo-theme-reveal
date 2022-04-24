@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+:root {
+    --r-background-color: ivory;
+    --r-block-margin: 5px;
+    --r-code-font: IBM Plex Mono,Cascadia Code PL,Helvetica,sans-serif;
+    --r-main-font: Montserrat,Source Sans Pro,Helvetica,sans-serif;
+    --r-main-font-size: 12pt;
+    --r-main-color: black;
+    --r-heading-font: Lexend Deca,Source Sans Pro,Helvetica,sans-serif;
+    --r-heading-font-weight: normal;
+    --r-heading2-size: 1.85em;
+    --r-heading3-size: 1.2em;
+    --r-heading-text-transform: none;
+    --r-heading-color: #ee4466;
+    --r-heading-margin: var(--r-block-margin) 0;
+    --r-dimmed-color: #996666;
+    --r-link-color: var(--r-heading-color);
+    --r-link-color-dark: #77335e;
+    --r-link-color-hover: #f2738c;
+    --r-credits-font: var(--r-heading-font);
+    --r-credits-font-size: calc(0.7 * var(--r-main-font-size));
+    --vh: 1%;
+}
+
+p code { font-size: .9em; }
+kbd {
+    border: 1px solid gray;
+    border-radius: .35em;
+    padding: .05em .35em;
+}
+.small-caps { font-variant: small-caps; }
+.green { color: green }
+.red { color: red }
+.structure, li::marker { color: var(--r-heading-color) }
+.accent  { color: var(--r-link-color-dark) }
+.columns { display: flex }
+.notes-display-links a[href] { font-family: var(--r-code-font) }
+.reveal pre {
+    font-size: .75em;
+    margin: var(--r-block-margin) 0;
+}
+.reveal .slide-background-content { filter: saturate(0) }
+.reveal .speaker-notes { z-index: 1000 }
+.reveal small, .notice { color: var(--r-dimmed-color); font-size: 1em; }
+.reveal .mb { margin-bottom: .5em }
+.reveal .ml { margin-left: 1em }
+.reveal dl, .reveal ol, .reveal ul { 
+    display: block;
+    padding: 0 0 0 1em;
+}
+.reveal ol ol, .reveal ol ul, .reveal ul ol, .reveal ul ul { margin-left: 1em }
+.reveal h1 {
+    --r-heading-font-weight: bold;
+    --r-heading-line-height: 0.9;
+}
+.reveal h1 a { color: white }
+.reveal h1 a:hover { color: #66a3ff }
+.reveal h2+p { margin: -15px 0 0 }
+.reveal h4 { color: var(--r-dimmed-color) }
+.reveal pre, .reveal blockquote { width: 100%; }
+.reveal pre code { max-height: 70vh; }
+.main-title h2 {
+    font-family: var(--r-heading-font);
+    font-size: var(--r-heading3-size);
+    font-weight: var(--r-heading-font-weight);
+    line-height: var(--r-heading-line-height);
+}
+.main-title h2+p { margin: 25px 0 0 }
+.reveal *+h3, .reveal *+h4 { margin-top: .75em }
+
+.slide-title {
+    display: none;
+    background: linear-gradient(to right, #002255, #0044aa);
+    color: white;
+    width: 100vw;
+    z-index: 9;
+    position: absolute;
+    font-family: var(--r-heading-font);
+    font-size: var(--r-heading3-size);
+    font-weight: var(--r-heading-font-weight);
+    line-height: var(--r-heading-line-height);
+}
+.slide-title a {
+    color: white;
+    padding-right: 1ex;
+}
+#reveal-header {
+    padding: .3em 1ex .35em;
+}
+.reveal-header .slide-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.reveal-header .reveal .slides {
+    margin-top: 3em;
+}
+
+.slide-footer {
+    color: white;
+    width: 100vw;
+    z-index: 9;
+    position: absolute;
+    bottom: 1.4em;
+    left: .5em;
+    font-family: var(--r-credits-font);
+    font-size: var(--r-credits-font-size);
+}
+.slide-footer span, .slide-footer a { color: inherit; opacity: .3 }
+.slide-footer a:hover, .slide-footer a:focus { color: inherit; opacity: .9 }
+
+.reveal .slides {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    text-align: left;
+}
+
+.center-title .slides section.container {
+    display: flex !important;
+    align-items: center;
+}
+
+.reveal .speaker-notes::before {
+    content: "Remarques";
+}
+.reveal .speaker-notes blockquote {
+    width: auto;
+    border-left: 3px solid grey;
+    padding: 0 0 0 .5em;
+}
+
+@media screen and (min-aspect-ratio: 1 / 1), screen and (min-width: 700px) {
+    .reveal-header .reveal .slides {
+        margin-top: .5em;
+    }
+    .reveal .slides section.container {
+        display: flex !important;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    :root { --r-main-font-size: 20pt; }
+    .reveal dl, .reveal ol, .reveal ul { margin: 0 0 0 1em }
+    .reveal li { margin: 0 0 10px 0 }
+    .table-of-content {
+        font-family: var(--r-heading-font);
+        font-size: var(--r-heading3-size);
+        font-weight: var(--r-heading-font-weight);
+        line-height: var(--r-heading-line-height);
+    }
+}
+
+@media screen and (min-width: 900px) {
+    :root { --r-main-font-size: 24pt; }
+    .reveal:not(.show-notes) .slides { width: 70%; }
+}

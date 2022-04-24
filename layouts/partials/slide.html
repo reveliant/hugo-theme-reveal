@@ -1,0 +1,4 @@
+                
+                <section{{ if .CurrentSection }} data-state="reveal-header" data-header="{{ if .Title }}{{ .Title }}{{ else }}{{ .CurrentSection.Title }}{{ end }}"{{ end }}>
+                    {{ .Content }}
+                </section>

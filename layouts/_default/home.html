@@ -1,0 +1,40 @@
+{{ define "main" }}
+		<div class="reveal">
+			<header class="slide-title">
+				<span id="reveal-header"></span>
+				{{- if .Site.Params.download -}}
+				<a class="text-white" href="{{ relURL .Site.Params.download }}" title="Télécharger le PDF"><span class="fa fa-file-arrow-down"></span></a>
+				{{- end -}}
+			</header>
+			<footer class="slide-footer" id="reveal-footer"></footer>
+			<div class="slides">
+				<section class="main-title" data-state="center-title"{{ if .Param "bg-image" }} data-background-image="bg/{{ .Param "bg-image" }}" data-background-opacity=".2" data-background-color="#002255" data-background-credits="{{ .Param "bg-credits" }}" data-background-author="{{ .Param "bg-author" }}"{{ if .Param "bg-authornick" }} data-background-author-nickname="{{ .Param "bg-authornick" }}"{{ end }}{{ end }}>
+					<h1>{{ .Site.Title }}</h1>
+					<p>{{ .Site.Author.name }}</p>
+					<aside class="notes">
+						<p>Pour afficher ou masquer ces notes à côté des slides, ajouter dans l'URL :</p>
+						<ul class="notes-display-links">
+							<li><a href="?showNotes">?showNotes</a> pour les afficher</li>
+							<li><a href="?hideNotes">?hideNotes</a> pour les masquer</li>
+						</ul>
+						<p>Actions clavier :</p>
+						<ul>
+							<li><kbd>S</kbd> : écran présentateur</li>
+							<li><kbd>O</kbd> : aperçu des slides</li>
+							<li><kbd>V</kbd> : mise en pause</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-state="reveal-header" data-header="{{ .Title }}">
+					{{ .Content }}
+				</section>
+				<section data-state="reveal-header" data-header="{{ .Site.Title }}">
+					<ol class="table-of-content">
+						{{- range sort .Site.Sections ".Weight" "asc" }}
+						<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+						{{ end }}
+					</ol>
+				</section>
+			</div>
+		</div>
+{{ end }}

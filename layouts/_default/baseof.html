@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+	<head>
+		<meta charset="utf-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	
+		<title>{{ .Site.Title }}</title>
+	
+		<meta name="description" content="{{ .Site.Params.description }}" />
+		<meta name="author" content="{{ .Site.Author.name }}" />
+		<meta name="build" content="{{ now | time.Format "2006-01-02" }}" />
+		{{ hugo.Generator }}
+
+		<link rel="icon" type="image/svg+xml" href="{{ relURL "shield.svg" }}" sizes="any" />
+		{{- range $size := slice 16 32 96 128 192 }}
+		<link rel="icon" type="image/png" href="{{ printf "favicons/favicon-%d.png" $size | relURL }}" sizes="{{ $size }}x{{ $size }}" />
+		{{- end }}	
+	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        {{- block "styles" . }}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.css" integrity="sha512-og4MAAhv7j2gLmZ2HNWT/ZqzBvrEWGE+fxjhQN+Svg2jsPaM3HcYF2rLTRzvzbYkp/W4eMFciBsdIHHvsTsxjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.0/reveal.min.css" integrity="sha512-vFD6wFRj2whK8/X/dMgxJHinKfGlwMYtN+yRCxvxvmOgIiMIlgrFb5iOuCoqwCID+Qcq2/gY8DpmNHcAjfHWxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/theme/white.min.css" integrity="sha512-RoEy1xOWgzryoplQ1g0eNHizP2BRqEq8eLGpRyI6OvM2FvmxpUyiPotvW4rp/I67VN6eFq4DDXQNcFKbNZ5Rrg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="{{ relURL "slides.css" }}" />
+        {{- end }}
+	</head>
+	<body>
+        {{ block "main" .}}
+        {{ end }}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-fzff82+8pzHnwA1mQ0dzz9/E0B+ZRizq08yZfya66INZBz86qKTCt9MLU0NCNIgaMJCgeyhujhasnFUsYMsi0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		{{ block "scripts" . }}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js" integrity="sha512-/wlhXEDdbvt3WbfQwgZ4hRehxquuDDLja5DV0lyoW+5kSVaCaQV9EAEU6AmpAkXd+S5yV78TJK/+YqR0uy8h4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/notes/notes.min.js" integrity="sha512-v2co+5nr0bgHekutTzF5jAB0UAjM95dpCF7VVw7WsFCjfxonbQo8Vwl487tNYl0iHWHHGV4o5xKBp5ifyhJkWg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/search/search.min.js" integrity="sha512-suMKyGV6uFsScyOATbF7242ca0AgVvznNEabJ7pjzLC5/LL8Elzrh8coqkhKOFMZB+RzpRpg/uxYba0unxBSBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="{{ relURL "slides.js" }}{{ if .Params.showNotes }}?showNotes{{ end }}"></script>
+        {{ end }}
+	</body>
+</html>
