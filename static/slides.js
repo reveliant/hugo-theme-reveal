@@ -16,13 +16,13 @@ Reveal.on('slidechanged', layoutSlide);
 function layoutSlide(event) {
     // event.previousSlide, event.currentSlide, event.indexh, event.indexv
     
-        let revealHeader = document.querySelector('#reveal-header');
-        if (revealHeader) {
-            revealHeader.innerHTML = null;
-            if (event.currentSlide.dataset.header) {
-                revealHeader.innerHTML = event.currentSlide.dataset.header;
-            }
+    let revealHeader = document.querySelector('#reveal-header');
+    if (revealHeader) {
+        revealHeader.innerHTML = null;
+        if (event.currentSlide.dataset.header) {
+            revealHeader.innerHTML = event.currentSlide.dataset.header;
         }
+    }
 
     let revealFooter = document.querySelector('#reveal-footer');
     if (revealFooter) {
@@ -31,7 +31,7 @@ function layoutSlide(event) {
             let text = document.createElement("SPAN");
             text.innerText = "Crédits photo : ";
             revealFooter.appendChild(text);
-
+            
             let link = document.createElement("A");
             link.href = event.currentSlide.dataset.backgroundCredits;
             link.innerText = event.currentSlide.dataset.backgroundAuthor;
@@ -39,7 +39,6 @@ function layoutSlide(event) {
                 link.innerText += " (" + event.currentSlide.dataset.backgroundAuthorNickname + ")";
             }
             revealFooter.appendChild(link);
-
             
             let textPost = document.createElement("SPAN");
             textPost.innerText = " sur Unsplash";
