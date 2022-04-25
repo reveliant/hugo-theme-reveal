@@ -1,0 +1,44 @@
+{{ define "main" }}
+		<div class="reveal">
+			<header class="slide-title">
+				<span id="reveal-header"></span>
+			</header>
+			<div class="slides">
+				<section class="container">
+					<section class="main-title" data-state="center-title"{{ if .Param "bg-image" }} data-background-image="bg/{{ .Param "bg-image" }}" data-background-opacity=".2" data-background-color="#002255"{{ end }}>
+						<h1>{{ .Site.Title }}</h1>
+						<p>{{ .Site.Author.name }}</p>
+						<aside class="notes">
+							<p>Pour afficher ou masquer ces notes à côté des slides, ajouter dans l'URL :</p>
+							<ul class="notes-display-links">
+								<li><a href="?showNotes">?showNotes</a> pour les afficher</li>
+								<li><a href="?hideNotes">?hideNotes</a> pour les masquer</li>
+							</ul>
+							<p>Actions clavier :</p>
+							<ul>
+								<li><kbd>S</kbd> : écran présentateur</li>
+								<li><kbd>O</kbd> : aperçu des slides</li>
+								<li><kbd>V</kbd> : mise en pause</li>
+							</ul>
+						</aside>
+					</section>
+					<section data-state="reveal-header" data-header="{{ .Title | markdownify }}">
+						{{ .Content }}
+					</section>
+				</section>
+				{{- range sort .Site.Sections ".Weight" "asc"}}
+				{{- if ne .Section "cyberdyne" }}
+				<section class="container">
+					<section data-state="center-title"{{ if .Param "bg-image" }} data-background-image="bg/{{ .Param "bg-image" }}" data-background-opacity=".2" data-background-color="#aa0000"{{ if .Param "bg-position" }} data-background-position="{{ .Param "bg-position" }}"{{ end }}{{ if .Param "bg-size" }} data-background-size="{{ .Param "bg-size" }}"{{ end }}{{ end }}>
+						<h2>{{ .Title | markdownify }}</h2>
+						{{ .Content }}
+					</section>
+					{{- range .Pages.ByWeight -}}
+						{{- partial "slide.html" . -}}
+					{{- end -}}
+				</section>
+				{{- end }}
+				{{- end }}
+			</div>
+		</div>
+{{ end }}
