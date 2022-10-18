@@ -28,6 +28,9 @@
 				<section data-state="reveal-header" data-header="{{ .Title }}">
 					{{ .Content }}
 				</section>
+				{{- range .RegularPages }}
+                    {{- partial "slide.html" . }}
+                {{- end }}
 				<section data-state="reveal-header" data-header="{{ .Site.Title }}">
 					<ol class="table-of-content">
 						{{- range sort .Site.Sections ".Weight" "asc" }}
