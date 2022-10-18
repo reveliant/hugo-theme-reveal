@@ -8,6 +8,7 @@ Reveal.initialize({
     disableLayout: true,
     plugins: [ RevealNotes, RevealSearch ],
     showNotes: scriptParams.has("showNotes") ? !params.has("hideNotes") : params.has("showNotes"),
+    slideNumber: 'c/t',
 });
 
 Reveal.on('ready', layoutSlide);
