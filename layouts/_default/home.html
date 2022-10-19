@@ -11,6 +11,7 @@
 				<section class="main-title" data-state="center-title"{{ if .Param "bg-image" }} data-background-image="bg/{{ .Param "bg-image" }}" data-background-opacity=".2" data-background-color="#002255" data-background-credits="{{ .Param "bg-credits" }}" data-background-author="{{ .Param "bg-author" }}"{{ if .Param "bg-authornick" }} data-background-author-nickname="{{ .Param "bg-authornick" }}"{{ end }}{{ end }}>
 					<h1>{{ .Site.Title }}</h1>
 					<p>{{ .Site.Author.name }}</p>
+					<p class="version">v.{{ now | time.Format "2006102" }}</p>
 					<aside class="notes">
 						<p>Pour afficher ou masquer ces notes à côté des slides, ajouter dans l'URL :</p>
 						<ul class="notes-display-links">

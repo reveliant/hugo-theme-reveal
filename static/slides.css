@@ -62,13 +62,20 @@ kbd {
 .reveal h4 { color: var(--r-dimmed-color) }
 .reveal pre, .reveal blockquote { width: 100%; }
 .reveal pre code { max-height: 70vh; }
-.main-title h2 {
+.main-title {
     font-family: var(--r-heading-font);
+}
+.main-title h2 {
     font-size: var(--r-heading3-size);
     font-weight: var(--r-heading-font-weight);
     line-height: var(--r-heading-line-height);
 }
 .main-title h2+p { margin: 25px 0 0 }
+.main-title p.version {
+    text-align: right;
+    font-size: 70%;
+    margin-top: 7em;
+}
 .reveal *+h3, .reveal *+h4 { margin-top: .75em }
 
 .reveal .slide-title {
