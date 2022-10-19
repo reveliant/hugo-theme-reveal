@@ -121,28 +121,33 @@ kbd {
 }
 
 .reveal .slide-number {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
     font-family: var(--r-number-font);
-    font-size: var(--r-number-font-size);
-    background-color: transparent;
+    font-size: 10px;
     position: absolute;
-    top: auto;
-    bottom: 12px;
-    left: auto;
     right: 12px;
+    width: calc(3.6em + 6.4em);
+    bottom: calc(3.2em + 12px);
+    height: 3.6em;
+    background-color: transparent;
+    color: var(--r-link-color);
     padding: 0;
 }
 .reveal .slide-number > a {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--r-link-color);
-    position: absolute;
-    right: 0;
-    width: 6.4em;
-    bottom: 1.6em;
-    height: 3.2em;
+    font-size: var(--r-number-font-size);
+    transition: color 0.2s ease;
 }
-.reveal.has-dark-background .slide-number > a { color: #fff }
+.reveal:not(.has-vertical-slides) .slide-number {
+    right: calc(.5em + 12px);
+    width: calc(3.6em + 5.5em - .5em);
+    bottom: calc(1.4em + 12px);
+}
+.reveal.has-dark-background .slide-number { color: #fff }
 .reveal .slide-number-delimiter { margin: 0 }
 
 .center-title .slides section.container {
