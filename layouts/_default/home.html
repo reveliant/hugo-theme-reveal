@@ -32,7 +32,7 @@
 				{{- range .RegularPages }}
                     {{- partial "slide.html" . }}
                 {{- end }}
-				<section data-state="reveal-header" data-header="{{ .Site.Title }}">
+				<section data-state="reveal-header" data-header="{{ .Site.Title }}" id="table-of-content">
 					<ol class="table-of-content">
 						{{- range sort .Site.Sections ".Weight" "asc" }}
 						<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>

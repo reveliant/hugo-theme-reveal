@@ -2,13 +2,13 @@
 		<div class="reveal">
 			<header class="slide-title">
 				<span id="reveal-header"></span>
-				<a class="text-white" href="{{ .Site.Home.RelPermalink }}#/2" title="Retourner à la liste des cours"><span class="fa fa-home"></span></a>
+				<a class="text-white" href="{{ .Site.Home.RelPermalink }}#/table-of-content" title="Retourner à la liste des cours"><span class="fa fa-home"></span></a>
 			</header>
 			<footer class="slide-footer" id="reveal-footer"></footer>
 			<div class="slides">
 				{{- $section := . }}
                 <section class="main-title" data-state="center-title"{{ if .Param "bg-image" }} data-background-image="{{ path.Join "bg" (.Param "bg-image") | relURL }}" data-background-opacity=".2" data-background-color="#002255" data-background-credits="{{ .Param "bg-credits" }}" data-background-author="{{ .Param "bg-author" }}"{{ if .Param "bg-authornick" }} data-background-author-nickname="{{ .Param "bg-authornick" }}"{{ end }}{{ if .Param "bg-position" }} data-background-position="{{ .Param "bg-position" }}"{{ end }}{{ if .Param "bg-size" }} data-background-size="{{ .Param "bg-size" }}"{{ end }}{{ end }}>
-                    <h1><a href="{{ .Site.Home.RelPermalink }}#/2">{{ .Site.Title }}</a></h1>
+                    <h1><a href="{{ .Site.Home.RelPermalink }}#/table-of-content">{{ .Site.Title }}</a></h1>
                     <h2>{{ .Title }}</h2>
 					<aside class="notes">
 						<p>Pour afficher ou masquer ces notes à côté des slides, ajouter dans l'URL :</p>
